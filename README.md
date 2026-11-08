@@ -2,6 +2,10 @@
 
 A free, modernized FFXIV Dialogue Maker based on the original project by Sebastian Scaini and F'ortuna Favore, featuring live previews, customizable dialogue boxes, and multiple in-game styles.
 
+AI Usage Disclosure
+
+This project was developed with AI assistance for coding, debugging, and technical implementation. The functionality, workflow, feature requirements, and testing were done by me. No AI-generated artwork is included. The dialogue graphics originate from the credited FFXIV resources.
+
 ## ⚖️ A Note on Licensing
 
 **SOURCE CODE: CC0 1.0 UNIVERSAL.** The Community Edition's source code is dedicated to the public domain to the extent its contributors hold the applicable rights. You may use, edit, fork and redistribute that code, including commercially. See the full [LICENSE](LICENSE) and precise [LICENSE_SCOPE.md](LICENSE_SCOPE.md).
