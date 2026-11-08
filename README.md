@@ -113,5 +113,3 @@ See [QA_REPORT.md](QA_REPORT.md) for the tested environments, checks and caveats
 ## Credits, rights, and publication
 
 Source code: **CC0 1.0 Universal** ([LICENSE](LICENSE), [scope](LICENSE_SCOPE.md)). This does not license third-party graphics. See [credits](CREDITS_AND_RIGHTS.md) and [asset restrictions](THIRD_PARTY_ASSETS.md).
-
-**Public-release caution:** Source code is ready for sharing under CC0, but permission to redistribute the bundled, PSD-derived artwork as part of a public GitHub release has **not** been verified. This ZIP is a **review-ready full build**, not a legal assurance of redistribution clearance. If necessary, publish a rights-cleared source-only version after adapting the program to support user-supplied frame assets.
