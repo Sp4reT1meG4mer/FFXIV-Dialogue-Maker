@@ -4,7 +4,11 @@ A free, modernized FFXIV Dialogue Maker based on the original project by Sebasti
 
 AI Usage Disclosure
 
-This project was developed with AI assistance for writing README, etc. (im bad with words and legal text is a mess to do). The functionality, workflow, feature requirements, and testing were done by me. No AI-generated artwork is included. The dialogue graphics originate from the credited FFXIV resources.
+This project was developed with AI assistance for writing README, etc. (im bad with words and legal text is a mess to do). 
+
+The functionality, workflow, feature requirements, and testing were done by me.
+
+No AI-generated artwork is included. The dialogue graphics originate from the credited FFXIV resources.
 
 ## ⚖️ A Note on Licensing
 
