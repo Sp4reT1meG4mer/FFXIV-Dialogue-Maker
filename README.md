@@ -1,14 +1,6 @@
 # FFXIV Dialogue Maker · Community Edition v1.0
 
-A free, modernized FFXIV Dialogue Maker based on the original project by Sebastian Scaini and F'ortuna Favore, featuring live previews, customizable dialogue boxes, and multiple in-game styles.
-
-AI Usage Disclosure
-
-This project was developed with AI assistance for writing README, etc. (im bad with words and legal text is a mess to do). 
-
-The functionality, workflow, feature requirements, and testing were done by me.
-
-No AI-generated artwork is included. The dialogue graphics originate from the credited FFXIV resources.
+A free, offline GPose dialogue editor: position your screenshot, pick an authentic dialogue style, add text and export a PNG.
 
 ## ⚖️ A Note on Licensing
 

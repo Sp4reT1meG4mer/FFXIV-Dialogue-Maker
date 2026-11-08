@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An offline GPose screenshot editor with a live FFXIV-style dialogue preview.">
+  <title>FFXIV Dialogue Maker | Community Edition v1.0</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="editor.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">✧</div>
+      <div>
+        <h1>FFXIV Dialogue Maker <span class="gold">·</span> Community Edition v1.0</h1>
+        <p class="subtitle">Local GPose dialogue editor · five styles · live preview · PNG export</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="pill" id="exportPill">Auto resolution</span>
+    </div>
+  </header>
+
+  <main>
+    <aside class="sidebar" aria-label="Editor controls">
+      <section class="section">
+        <h2>01 · Choose what to move</h2>
+        <p class="mode-guide" id="modeGuide">Step 1: Position the screenshot. The dialogue frame stays locked in the lower center.</p>
+        <div class="mode-buttons" role="group" aria-label="Editing mode">
+          <button class="button primary" id="editBackground" type="button" disabled aria-pressed="true">① Edit screenshot</button>
+          <button class="button" id="editDialogue" type="button" disabled aria-pressed="false">② Edit dialogue box</button>
+        </div>
+        <p class="hint">Switch freely between the two modes. The inactive layer stays fixed.</p>
+      </section>
+
+      <section class="section">
+        <h2>02 · Your screenshot</h2>
+        <button class="drop-zone" id="dropzone" type="button">
+          <strong>＋ Load GPose image</strong>
+          <small>Choose a file, or drop it here</small>
+          <small>PNG · JPG · WEBP · AVIF</small>
+        </button>
+        <input class="visually-hidden-file" id="photoFile" type="file" accept="image/png,image/jpeg,image/webp,image/avif">
+        <div class="filename" id="filename">No image loaded yet</div>
+        <div class="image-metadata"><span>Image: <strong id="sourceResolution">No screenshot loaded</strong></span><span>Preview: <strong id="previewResolution">1920 × 1080</strong></span></div>
+        <div class="range-heading"><label for="zoom">Background zoom</label><output id="zoomValue">100%</output></div>
+        <input id="zoom" type="range" disabled min="40" max="350" step="1" value="100">
+        <button class="button full-width small-gap" id="resetPhoto" type="button" disabled>↺ Reset screenshot position</button>
+        <p class="hint">In stage ①, drag or use the mouse wheel to reframe. Then switch to stage ②.</p>
+      </section>
+
+      <section class="section">
+        <h2>03 · Dialogue <span class="heading-aside">Live preview</span></h2>
+        <label class="field-label" for="dialogueStyle">Dialogue style</label>
+        <select class="field" id="dialogueStyle" aria-label="Dialogue style" disabled>
+          <option value="talk" selected>Talk</option>
+          <option value="shout">Shout</option>
+          <option value="dragon">Dragon</option>
+          <option value="deity">Deity</option>
+          <option value="write">Write</option>
+        </select>
+        <p class="hint" id="styleStatus" role="status" aria-live="polite">Loading dialogue styles…</p>
+        <p class="hint">Styles extracted from a community PSD template. Changing style also replaces an uploaded custom frame.</p>
+        <label class="field-label" for="speakerName">Speaker name</label>
+        <input class="field" id="speakerName" type="text" disabled value="Guard" maxlength="70" autocomplete="off">
+        <div class="range-heading"><label for="nameplateFade">Nameplate fade</label><output id="nameplateFadeValue">0%</output></div>
+        <input id="nameplateFade" type="range" min="0" max="100" step="1" value="0" disabled>
+        <p class="hint">0% = original wide PSD name shadow. 100% = invisible shadow. Your name stays visible.</p>
+        <label class="field-label" for="dialogueText">Dialogue text</label>
+        <textarea class="field" id="dialogueText" maxlength="1200" disabled>i was once an adventurer too...then i took a screenshot to the knee</textarea>
+        <p class="warning" id="overflowWarning" role="status" aria-live="polite" hidden></p>
+        <div class="range-heading"><label for="frameScale">Scale whole frame proportionally</label><output id="scaleValue">100%</output></div>
+        <input id="frameScale" type="range" min="55" max="150" step="1" value="100" disabled>
+        <label class="toggle"><input id="unlockWidth" type="checkbox" disabled> Unlock independent frame width</label>
+        <div class="range-heading"><label for="boxWidth">Frame width</label><output id="widthValue">668 px</output></div>
+        <input id="boxWidth" type="range" min="668" max="1400" step="2" value="668" disabled>
+        <div class="range-heading"><label for="fontSize">Dialogue text size</label><output id="fontValue">27 px</output></div>
+        <input id="fontSize" type="range" min="18" max="45" step="1" value="27" disabled>
+        <button class="button full-width" id="resetDialog" type="button" disabled>↺ Center dialogue at bottom</button>
+        <p class="hint">The 668 px width is locked by default. Scaling preserves the box's proportions, including the text, up to 150%. Unlock width to make it wider, never narrower than the 668 px baseline.</p>
+      </section>
+
+      <section class="section">
+        <h2>04 · Dialogue frame image</h2>
+        <label class="toggle"><input type="checkbox" id="showBox" checked disabled> Show dialogue overlay (frame and text)</label>
+        <p class="hint">The chosen style uses bundled dialogue artwork. You can temporarily override it with a transparent frame PNG.</p>
+        <button class="button full-width" id="spriteBtn" type="button" disabled>Upload optional frame PNG</button>
+        <input class="visually-hidden-file" id="spriteFile" type="file" accept="image/png,image/webp">
+        <div class="filename" id="spriteName">Using Talk frame (PSD)</div>
+        <button class="button full-width small-gap" id="clearSprite" type="button" disabled>Use selected style frame</button>
+      </section>
+
+      <section class="section last-section">
+        <h2>05 · Export resolution</h2>
+        <label class="toggle export-option"><input id="exportOriginal" type="radio" name="resolution" value="original" checked disabled> Original screenshot size</label>
+        <label class="toggle export-option"><input id="exportFit" type="radio" name="resolution" value="fit" disabled> Fit within 1920 × 1080 (Full HD)</label>
+        <p class="hint" id="exportNotice">Original preserves the source size. Smaller screenshots stay small.</p>
+        <div class="export-size">Final PNG: <strong id="outputResolution">Choose a screenshot</strong></div>
+        <button class="button primary full-width" id="exportSide" type="button" disabled>↓ Download PNG</button>
+        <p class="hint">Your image is processed locally. The editor does not upload screenshots or connect to a server.</p>
+      </section>
+    </aside>
+
+    <section class="preview-column" aria-label="Composition preview">
+      <div class="preview-toolbar">
+        <div><strong>Live preview</strong><span id="stageHint"> · Drag screenshot · frame locked</span></div>
+        <div class="toolbar-buttons">
+          <button class="button" id="zoomOut" type="button" disabled aria-label="Zoom screenshot out">−</button>
+          <button class="button" id="zoomIn" type="button" disabled aria-label="Zoom screenshot in">＋</button>
+        </div>
+      </div>
+      <div class="canvas-frame" id="canvasFrame">
+        <canvas id="stage" width="1920" height="1080" tabindex="0" aria-label="Composition preview. Drag with the mouse or use arrow keys to move the selected layer. Hold Shift for ten-pixel steps.">
+          A canvas-capable browser is required.
+        </canvas>
+        <div class="preview-badges" aria-hidden="true">
+          <span id="previewMode">BACKGROUND EDIT · BOX LOCKED</span><span id="aspectLabel">1920 × 1080 · PREVIEW</span>
+        </div>
+      </div>
+      <p class="stage-note" id="stageNote">Stage ①: Move the screenshot. Then choose ② Edit dialogue box.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>Original concept: <a href="https://sebastianscaini.itch.io/ffxiv-dialogue-overlay-maker" target="_blank" rel="noopener noreferrer">FFXIV Dialogue Maker</a> by <strong>Sebastian Scaini</strong> and <strong>F'ortuna Favore</strong>.
+      The original project lists <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>; PSD art is separately credited.</div>
+    <div>PSD template: <a href="https://www.xivmodarchive.com/modid/37755" target="_blank" rel="noopener noreferrer">milksnout</a>, crediting Clawbriar · <a href="CREDITS_AND_RIGHTS.md">Credits & rights</a> · <a href="THIRD_PARTY_ASSETS.md">Asset notice</a> · © SQUARE ENIX · Unofficial fan tool</div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
