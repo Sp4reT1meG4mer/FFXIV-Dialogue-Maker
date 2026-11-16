@@ -2,7 +2,7 @@
 
 > **IMPORTANT: FFXIV ARTWORK IS NOT LICENSED UNDER CC0.**
 >
-> The 15 PNGs in `assets/` are PSD-derived, game-related UI graphics. They are **not part of the source-code public-domain dedication**. They are included in this review package as an example of the editor's five available styles. Bundling them in a free project does **not**, by itself, establish permission for public redistribution.
+> The 15 PSD-derived game-related UI graphics are embedded as image data in `FFXIV_Dialogue_Maker_v1.1.html`. They are **not part of the source-code public-domain dedication**. They are embedded in the HTML as the editor's five available styles. Bundling them in a free project does **not**, by itself, establish permission for public redistribution.
 
 ## What the graphics are
 
@@ -21,12 +21,12 @@ The policy describes specific **limited, revocable permissions**, retains underl
 
 ## If you reuse, fork or publish this project
 
-- The program code is available under CC0 (see [LICENSE_SCOPE.md](LICENSE_SCOPE.md)); that freedom does **not** carry over to game-derived images in `assets/`.
+- The program code is available under CC0 (see [LICENSE_SCOPE.md](LICENSE_SCOPE.md)); that freedom does **not** carry over to game-derived images embedded in the HTML.
 - Reusing or redistributing the image assets requires independently determining what use is permitted by applicable law, the current Square Enix materials policies, and any third-party rights. **Do not treat this project's documentation as a license to the artwork.**
 - Do not sell or otherwise monetize FFXIV material in violation of those terms.
 - Provide proper attribution and include **© SQUARE ENIX** where required by the applicable policy, including when sharing exports containing protected game content.
 - Respect any request by the relevant rights holders to remove protected materials.
-- A fully independently rights-cleared source-only fork could omit the `assets/` files and require users to provide their own appropriately licensed artwork, but that would require a separate product change and test pass.
+- A fully independently rights-cleared source-only fork could omit the embedded game images and require users to provide their own appropriately licensed artwork, but that would require a separate product change and test pass.
 
 ## Disclaimer
 

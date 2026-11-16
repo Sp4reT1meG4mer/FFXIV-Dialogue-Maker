@@ -1,115 +1,85 @@
-# FFXIV Dialogue Maker · Community Edition v1.0
+# FFXIV Dialogue Maker · Community Edition v1.1
 
-A free, offline GPose dialogue editor: position your screenshot, pick an authentic dialogue style, add text and export a PNG.
+A free, offline GPose dialogue editor. Move your screenshot, add an FFXIV dialogue box, and export a finished PNG.
 
-## ⚖️ A Note on Licensing
+## Quick start
 
-**SOURCE CODE: CC0 1.0 UNIVERSAL.** The Community Edition's source code is dedicated to the public domain to the extent its contributors hold the applicable rights. You may use, edit, fork and redistribute that code, including commercially. See the full [LICENSE](LICENSE) and precise [LICENSE_SCOPE.md](LICENSE_SCOPE.md).
+**The editor is now one self-contained HTML file.**
 
-**IMPORTANT: FFXIV ARTWORK IS NOT COVERED BY CC0.** The dialogue-box PNGs, name shadows, and continuation markers in `assets/` are derived from *FINAL FANTASY XIV*-related graphics and **remain subject to the rights of Square Enix and other applicable rights holders**. We do not claim ownership of them, do not sublicense them, and do not grant anyone unrestricted permission to reuse or distribute them.
+1. Extract this ZIP, or download the HTML file by itself.
+2. Double-click **`FFXIV_Dialogue_Maker_v1.1.html`** to open it in a modern desktop browser.
+3. Choose **Load GPose image** (PNG, JPG, WebP or AVIF).
+4. In **① Edit screenshot**, drag or zoom the screenshot. The dialogue box stays in place.
+5. In **② Edit dialogue box**, drag the box, select a style and enter the speaker name and text.
+6. Choose **Original screenshot size** or **Fit within 1920 × 1080**, then select **Download PNG**.
 
-This free, non-commercial fan utility is intended to respect Square Enix's [official FFXIV Materials Usage Policy (Europe)](https://support.eu.square-enix.com/rule.php?id=5383&la=2&tag=authc). The policy's permissions are limited and revocable, vary by account region, and **do not clearly authorize redistribution of extracted UI PNGs inside a downloadable repository**. Everyone reusing or distributing those images must independently check the applicable terms and permissions. A disclaimer is **not** a substitute for rights clearance.
+No installation, Python, localhost, internet, separate assets folder, or other files are required to run the HTML. Screenshot and custom-frame processing stays on your device; the editor does not upload pictures or use tracking or analytics. Credit links only open if you click them.
 
-**© SQUARE ENIX** · Independent fan tool, not affiliated with or endorsed by Square Enix.
+## What's new in v1.1
 
-**Credits:** Original dialogue maker by **Sebastian Scaini** and **F'ortuna Favore**; PSD compilation by **milksnout**, crediting sprite extraction by **Clawbriar** of The Spriters Resource. See [CREDITS_AND_RIGHTS.md](CREDITS_AND_RIGHTS.md) and the complete [third-party artwork notice](THIRD_PARTY_ASSETS.md).
+In v1.0, PNG export could fail when dialogue graphics loaded from local `assets/*.png` files were drawn into the export canvas. **v1.1 embeds all 15 PNGs directly inside the HTML** so the editor no longer needs to fetch separate local artwork. CSS, JavaScript and licensing/credit notices are also embedded. The maintainer confirmed that dialogue-enabled PNG export works after opening the HTML directly in Chrome on Windows. See [CHANGELOG.md](CHANGELOG.md) and [QA_REPORT.md](QA_REPORT.md).
 
----
-
-## Start in under a minute
-
-**IMPORTANT: DOWNLOAD AND EXTRACT THE COMPLETE RELEASE ZIP.** This is a folder-based editor, not a standalone HTML file. Keep `Dialogue_Maker.html`, `editor.js`, `styles.css`, and the entire `assets/` folder together. **Do not open `Dialogue_Maker.html` inside the ZIP, or download only that file from GitHub.** Missing files will prevent the editor or styles from working.
-
-1. **Extract the entire ZIP** to a folder. Do not run `Dialogue_Maker.html` from *inside* the ZIP.
-2. Open **`Dialogue_Maker.html`** in a modern desktop browser. The app needs `editor.js`, `styles.css`, and the whole `assets/` folder beside it.
-3. Select **Load GPose image** and choose a PNG, JPG, WebP, or AVIF screenshot. You can also drop a screenshot onto the upload area. **Other editing controls remain locked until the screenshot finishes loading**; the screenshot picker can replace a slow or unwanted pending file.
-4. In **① Edit screenshot**, drag the background or use the mouse wheel / zoom control until the composition looks right. The dialogue box stays still.
-5. Switch to **② Edit dialogue box**. Drag the box, choose a style, edit the name and dialogue, and optionally adjust scale, width, font size, or name-shadow fade.
-6. Choose **Original screenshot size** or **Fit within 1920 × 1080** and click **Download PNG**.
-
-All screenshot and frame file processing stays on your device. The application has no analytics, third-party scripts, remote fonts, or network calls. The footer contains source/credit links, which only open if you click them.
-
-## Styles
-
-The **Dialogue style** selector (above the speaker-name field) offers five art variants from the separate *Dialogue Template for Screenshots* PSD:
+## Five styles
 
 | Style | Appearance |
 | --- | --- |
-| **Talk** | Standard rounded dialogue box, default |
-| **Shout** | More pointed, emphatic outline |
+| **Talk** | Standard rounded dialogue box |
+| **Shout** | Pointed, emphatic outline |
 | **Dragon** | Frosty / weathered ornamental frame |
-| **Deity** | Ornate framed dialogue |
+| **Deity** | Ornate dialogue frame |
 | **Write** | Written-message / parchment-style panel |
 
-Each has its own background art, continuation marker, and wide name shadow. **All 15 images preload before the style selector unlocks**, so switching is immediate and never displays a partially loaded skin. If any required asset fails to load, the selector remains locked and an on-screen status explains why. Switching styles keeps your entered name, dialogue, position, scale, width, and fade setting. If you loaded a *custom* frame, selecting a style replaces that custom image.
+Each has its own frame, continuation marker, and wide name shadow. Switching styles preserves your text, position, scale, width and fade settings.
 
 ## Editor controls
 
 | Control | Behavior |
 | --- | --- |
-| **① / ②** | Separately edit screenshot or dialogue box; the other layer is frozen |
-| **Background zoom** | 40% to 350%; mouse wheel zooms toward pointer |
-| **Drag preview** | Moves whichever layer is selected |
-| **Arrow keys** | With preview focused, nudge selected layer by 1 preview pixel; Shift + arrow by 10 |
-| **Whole-frame scale** | 55% to 150% of baseline; box and text scale together |
-| **Unlock independent frame width** | Allows a frame width **from 668 to 1400 baseline pixels**, never less than 668 |
+| **① / ②** | Switch between screenshot and dialogue layer; the other stays fixed |
+| **Background zoom** | 40–350%, also by mouse wheel |
+| **Arrow keys** | Nudge active layer when preview is focused (Shift = larger step) |
+| **Frame scale** | 55–150%; box and text scale together |
+| **Independent width** | Optional frame widening from 668 to 1400 baseline pixels |
 | **Dialogue text size** | 18–45 baseline pixels |
-| **Nameplate fade** | 0% keeps the original wide shadow; 100% hides it, preserving the name text |
-| **Center dialogue at bottom** | Restores centered positioning of the dialogue box |
-| **Show dialogue overlay** | Shows or hides the entire overlay, including text |
-| **Optional frame PNG** | Temporarily replaces the selected PSD bubble; supports PNG and WebP |
-| **Use selected style frame** | Removes the custom-frame override |
+| **Nameplate fade** | 0% retains the wide shadow; 100% hides it but leaves speaker text |
+| **Center dialogue at bottom** | Restore initial lower-center position |
+| **Show dialogue overlay** | Show/hide entire frame, name and dialogue |
+| **Optional frame PNG** | Override the selected style with your own PNG/WebP frame |
+| **Use selected style frame** | Return from a custom frame to the built-in style |
 
-The frame starts locked to its original width. On small images, its displayed pixel size scales with the screenshot; the width settings describe *baseline* dimensions, not a promise that every tiny screenshot will display a 668-pixel-wide dialogue box.
+## Screenshot and export limits
 
-## Screenshot size and export
-
-- Supported screenshot formats: **PNG, JPEG, WebP, AVIF** (browser support for AVIF varies).
-- Individual uploaded image limit: **60 MiB** and **65 megapixels**. Files above these limits are rejected, but browsers must still decode some image data before dimensions can be checked.
-- Preview is scaled to fit within **1920 × 1080**, preserving the screenshot's aspect ratio and never enlarging a small original.
-- **Original size export:** same pixel dimensions as the screenshot, if at most **4096 px per side** and **16 megapixels**.
-- **Fit within Full HD:** downscale if necessary to fit inside **1920 × 1080**, without cropping, stretching, or upscaling.
-- If original-size export would exceed its safety limit, the editor selects the Full HD option automatically.
-- When dialogue exceeds the available lines, the editor shows a warning and disables export until the text fits.
-- **One export at a time:** when export begins, all editing controls and the screenshot picker are temporarily disabled. The app ignores repeated export requests until PNG encoding succeeds or fails and the job is released. It cannot observe when the browser finishes saving the file to disk; the lock ends once the browser receives the download action.
-
-**Examples:** 640×640 exports as 640×640; 1280×720 stays 1280×720; 3840×2160 exports at 4K in original mode or 1920×1080 in Full HD mode; 2800×3200 keeps its portrait aspect ratio.
+- Supported files: PNG, JPG, WebP, AVIF (depending on browser support).
+- Per-upload limit **60 MiB** and **65 megapixels**.
+- Preview fits within **1920 × 1080** without cropping or upscaling small images.
+- Original-size PNG export retains screenshot dimensions up to **4096 pixels per side** and **16 megapixels**.
+- Full HD export fits within **1920 × 1080** without cropping, stretching or upscaling.
+- Dialogue overflow disables export until the text fits. Only one PNG export runs at a time.
 
 ## Troubleshooting
 
-**The preview is empty / frames are missing:** Extract the entire ZIP, preserving the `assets/` folder next to `Dialogue_Maker.html`. The app waits for complete style assets before allowing style changes, and PNG export stays disabled if the current style is incomplete. If assets fail to load, re-extract the complete folder and reopen `Dialogue_Maker.html`.
+**Export disabled:** Wait until screenshot decoding completes, and check for a dialogue-overflow warning. Very large source images may need Full HD mode.
 
-**Export button is disabled:** Load a screenshot and let it finish decoding, allow the current style images to load, and check for the dialogue-overflow warning. Export is also temporarily disabled while a PNG is being generated. If you're exporting a very large source, use **Fit within 1920 × 1080**.
+**PNG export failed:** Try a different image or browser. For a useful bug report, open a [GitHub issue](https://github.com/Sp4reT1meG4mer/FFXIV-Dialogue-Maker/issues) with your browser/version, screenshot dimensions and the browser console error. You do not need to share your personal screenshot.
 
-**My custom frame looks stretched:** The custom PNG/WebP is fitted to the current dialogue rectangle. Use a transparent frame with a similar aspect ratio, or select one of the bundled styles.
+**Custom frame stretched:** User-uploaded PNG/WebP frames fit the selected dialogue rectangle; use a similar aspect ratio or select one of the built-in styles.
 
-**Text looks different across machines:** The editor uses browser/system fonts (system-ui and Georgia). Exact glyph appearance and line wrapping can differ slightly across operating systems and browsers.
+**Text looks different across computers:** Font rendering and wrapping are system- and browser-dependent.
 
-**A 4K PNG causes heavy memory use:** Each full-size export requires an additional large canvas in memory. Close other memory-intensive tabs or switch to the Full HD export. File-size limits reduce but do not eliminate browser memory risks.
+**Large export uses too much memory:** Select Full HD export and close heavy browser tabs.
 
 ## Technical overview
 
-- Plain `Dialogue_Maker.html`, `styles.css`, and `editor.js` with Canvas 2D; no frameworks, build pipeline, server, cookies, local storage, or external packages at runtime.
-- Five dialogue skins composed from 15 transparent, PSD-derived PNG layers. Horizontal three-slice drawing preserves decorative edges when widening the box.
-- A shared rendering pipeline draws both preview and exported PNG to keep compositions consistent.
-- Async image-request counters reject stale uploads. Export lock prevents double encoding. Frame assets must all finish loading before enabling export.
-- Development/testing requires optional **Node.js** and **Python** with Playwright, Pillow, and a Chromium executable. End users need none of these.
+`FFXIV_Dialogue_Maker_v1.1.html` contains all HTML, CSS, JavaScript, 15 embedded PSD-derived PNG assets and inline copyright/credit notices. It has no runtime dependencies, backend, or server requirement. Its code remains inspectable within the HTML file. Developer tests from v1.0 were not shipped in this standalone user release, because they target the previous multi-file development layout.
 
-### Developer test commands
+## License, rights, credits
 
-Run inside the extracted project folder:
+**Source code: CC0 1.0 Universal**, to the extent contributors hold the relevant rights. See [LICENSE](LICENSE) and [LICENSE_SCOPE.md](LICENSE_SCOPE.md).
 
-```bash
-node --check editor.js
-node --test tests/qa.test.js
-python tests/browser_qa.py
-python tests/browser_nameplate_qa.py
-python tests/browser_styles_qa.py
-python tests/browser_release_qa.py
-```
+**Embedded FFXIV artwork is NOT CC0.** The 15 dialogue graphics embedded in the HTML remain subject to rights held by Square Enix and other applicable parties. The CC0 dedication for code grants no right to redistribute the embedded artwork, even though it shares a file with the code. An attribution notice alone does not establish rights clearance.
 
-See [QA_REPORT.md](QA_REPORT.md) for the tested environments, checks and caveats, and [CHANGELOG.md](CHANGELOG.md) for v1.0 changes.
+Original dialogue-maker inspiration: **Sebastian Scaini** and **F'ortuna Favore**. PSD template: **milksnout**, crediting sprite extraction by **Clawbriar** of The Spriters Resource. See [CREDITS_AND_RIGHTS.md](CREDITS_AND_RIGHTS.md) and [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md).
 
-## Credits, rights, and publication
+Free, unofficial FFXIV fan tool; not affiliated with or endorsed by Square Enix. See the applicable [FFXIV Materials Usage Policy](https://support.eu.square-enix.com/rule.php?id=5383&la=2&tag=authc) before using or redistributing game artwork.
 
-Source code: **CC0 1.0 Universal** ([LICENSE](LICENSE), [scope](LICENSE_SCOPE.md)). This does not license third-party graphics. See [credits](CREDITS_AND_RIGHTS.md) and [asset restrictions](THIRD_PARTY_ASSETS.md).
+**© SQUARE ENIX**

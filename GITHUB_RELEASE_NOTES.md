@@ -1,25 +1,23 @@
-# FFXIV Dialogue Maker · Community Edition v1.0
+# FFXIV Dialogue Maker · Community Edition v1.1
 
-**A small, offline dialogue-overlay editor for GPose screenshots.** No account, server or installation needed. Extract and open `Dialogue_Maker.html`.
+**Five FFXIV dialogue styles. One offline HTML file. No installation.**
 
-### Highlights
+## What's new
 
-- Five FFXIV dialogue styles derived from a separately sourced PSD: **Talk, Shout, Dragon, Deity and Write**.
-- Move or zoom the screenshot, then unlock and position the dialogue box independently.
-- Editable speaker, dialogue, proportional scale (55–150%), text size, independent width (668–1400 baseline px) and nameplate fade.
-- Auto-detect source resolution. Export original resolution when supported or fit inside 1920 × 1080 without stretching.
-- Local processing, safeguards against large uploads, missing style assets, text overflow and overlapping PNG exports.
+- Fixed the PNG export failure affecting the dialogue overlay in the local-file v1.0 release.
+- Embedded all 15 graphics, JavaScript, and CSS in the standalone HTML. No separate assets folder or local server needed.
+- All existing editing controls, custom frames, and original/Full HD PNG export options retained.
 
-### Get started
+## Installation
 
-Download the **complete release ZIP**, **extract all files**, then open `Dialogue_Maker.html` from the extracted folder. **Do not open it inside the ZIP or download only the HTML file.** Keep `assets/`, `editor.js` and `styles.css` beside it. See `README.md` for details.
+Extract the ZIP, then double-click **`FFXIV_Dialogue_Maker_v1.1.html`**. Alternatively, use the HTML alone. It runs in a modern desktop browser without internet access and does not upload screenshots.
 
-### License and third-party rights (please read)
+## Features
 
-**Source code: CC0 1.0 Universal.** Free to use, modify and redistribute, including commercially, to the extent the project holds the rights.
+Five styles: **Talk, Shout, Dragon, Deity, Write**. Independently move/zoom the screenshot and move/scale the dialogue, edit speaker/text, adjust frame width and name-shadow fade, and export a PNG within the resolution and image-size limits.
 
-**FFXIV dialogue artwork is NOT CC0.** The bundled sprite PNGs are derived from FFXIV-related assets. They remain subject to the rights of Square Enix and other applicable rights holders. The project's CC0 code dedication does **not** grant any permission to redistribute those graphics. Public distribution of the extracted artwork has **not been independently rights-cleared**, so this package is presently for review/local use, not an assurance that the bundled PNGs may be republished freely.
+## License and artwork
 
-This independent fan project is intended to be free and non-commercial and to respect the relevant [FFXIV Materials Usage Policy](https://support.eu.square-enix.com/rule.php?id=5383&la=2&tag=authc). See `THIRD_PARTY_ASSETS.md` and `CREDITS_AND_RIGHTS.md` for details and contributor credits.
+**Code: CC0 1.0 Universal**, to the extent contributors hold the relevant rights. **Embedded FFXIV artwork is not CC0** and remains subject to separate rights. See `LICENSE_SCOPE.md`, `CREDITS_AND_RIGHTS.md` and `THIRD_PARTY_ASSETS.md`.
 
-**© SQUARE ENIX** · Not affiliated with, endorsed by or sponsored by Square Enix.
+Original inspiration: Sebastian Scaini and F'ortuna Favore. PSD template: milksnout; sprites credited to Clawbriar. Unofficial independent fan project, not affiliated with or endorsed by Square Enix. **© SQUARE ENIX**

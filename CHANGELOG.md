@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.1 · 2026-11-16
+
+**Single-file HTML and local PNG export repair**
+
+- Embedded all 15 built-in dialogue frame, marker and name-shadow PNGs as data URLs, avoiding the local artwork loading issue that blocked dialogue-enabled PNG exports in v1.0.
+- Embedded JavaScript and CSS alongside the existing inline license/credit notices, making the app one self-contained HTML file.
+- Kept all five dialogue styles, photo/dialogue editing stages, size controls and export safeguards.
+- Chromium browser tests exported the actual user screenshot with dialogue in all five styles, in original and Full HD resolutions. The maintainer confirmed that direct local HTML use works in Windows Chrome.
+- Updated v1.1 release instructions and code/artwork license scope; third-party assets remain excluded from CC0.
+
+
 ## v1.0 · 2026-11-07
 
 **First feature-complete Community Edition build** based on the tested v0.5.6 prototype.

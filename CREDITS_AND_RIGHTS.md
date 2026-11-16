@@ -1,4 +1,4 @@
-# Credits and rights · FFXIV Dialogue Maker Community Edition v1.0
+# Credits and rights · FFXIV Dialogue Maker Community Edition v1.1
 
 ## 1. Original dialogue-maker inspiration
 
@@ -19,7 +19,7 @@ The following artwork was extracted from the *separate*, user-provided **`speech
 - The template author's own contributor note says **Clawbriar** on **The Spriters Resource** supplied the original sprite files.
 - Asset categories: Talk, Shout, Dragon, Deity and Write dialogue backgrounds, matching continuation markers and wide name shadows.
 
-**Important:** A public PSD download is *not* by itself a license to copy or redistribute the extracted sprite artwork. Neither the template listing nor the original dialogue maker's CC0 statement establishes unrestricted redistribution rights for these third-party PNG assets. This archive does **not** grant a license to assets it does not own.
+**Important:** A public PSD download is *not* by itself a license to copy or redistribute the extracted sprite artwork. Neither the template listing nor the original dialogue maker's CC0 statement establishes unrestricted redistribution rights for these third-party PNG assets. This release does **not** grant a license to assets it does not own.
 
 ## 3. Game trademarks and assets
 
@@ -33,7 +33,7 @@ The following artwork was extracted from the *separate*, user-provided **`speech
 
 **Community Edition source code: CC0 1.0 Universal**, to the extent the project's contributors hold copyright and related rights. Read the standard legal text in [`LICENSE`](LICENSE) and the explicit covered/excluded file list in [`LICENSE_SCOPE.md`](LICENSE_SCOPE.md).
 
-**Crucially, CC0 excludes all 15 PSD-derived PNG images in `assets/`, any game-based artwork and third-party marks.** Refer to [`THIRD_PARTY_ASSETS.md`](THIRD_PARTY_ASSETS.md) for their source and applicable usage restrictions.
+**Crucially, CC0 excludes all 15 PSD-derived PNG images embedded in the standalone HTML, any game-based artwork and third-party marks.** Refer to [`THIRD_PARTY_ASSETS.md`](THIRD_PARTY_ASSETS.md) for their source and applicable usage restrictions.
 
 ## 5. Square Enix policy and rights caveat
 
@@ -43,13 +43,13 @@ That policy describes limited, revocable permissions and requires the notice **�
 
 This project is independent, unofficial and not sponsored, approved or endorsed by Square Enix or the creators of the original Dialogue Maker or PSD template.
 
-## 6. Before publishing a public GitHub release with images
+## 6. Before publishing or redistributing a release with embedded images
 
-1. Establish a suitable permission/legal basis for public redistribution of the 15 extracted PSD-derived PNGs, or make an alternative source-only version with appropriately rights-cleared artwork supplied by users.
+1. Establish a suitable permission/legal basis for public redistribution of the 15 extracted PSD-derived graphics, including those embedded in the HTML, or make an alternative source-only version with appropriately rights-cleared artwork supplied by users.
 2. Keep the code/artwork license distinction visible in the README and release description.
 3. Recheck the latest applicable FFXIV materials policy and honor removal requests from rights holders.
-4. Final smoke test on the actual user's browser and extracted ZIP. Other browser engines were not verified in the original QA pass.
+4. Final smoke test on the user's browser and the standalone HTML. Other browser engines were not verified in the original QA pass.
 
-**Review status:** Code licensing specified; the application is functionally complete for personal testing. Public asset redistribution remains unresolved. This is an informational rights notice, not legal advice.
+**Review status:** v1.1 dialogue-enabled PNG export tested; code licensing specified. Public asset redistribution remains unresolved. This is an informational rights notice, not legal advice.
 
 **© SQUARE ENIX**
